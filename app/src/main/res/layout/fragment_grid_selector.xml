@@ -1,0 +1,25 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.temple.mikem.checkerboardmaker.GridSelector"
+    android:id="@+id/fragment_grid_selector">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:text="@string/explanation"
+        android:id="@+id/explanation"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/display_button"
+        android:id="@+id/display_button"
+        android:layout_gravity="center_horizontal|bottom" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/grid_spinner"
+        android:layout_gravity="center" />
+
+</FrameLayout>
