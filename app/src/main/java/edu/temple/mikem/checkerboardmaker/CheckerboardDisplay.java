@@ -29,6 +29,7 @@ public class CheckerboardDisplay extends Fragment {
     private String mParam2;
     GridView grid;
     private OnFragmentInteractionListener mListener;
+    String[] gridLabels;
 
     public CheckerboardDisplay() {
         // Required empty public constructor
@@ -58,7 +59,7 @@ public class CheckerboardDisplay extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_checkerboard_display, container, false);
         grid = (GridView) v.findViewById(R.id.gridView);
-
+        gridLabels = getActivity().getResources().getStringArray(R.array.numbers);
         int cols;
 
         if (getArguments() != null && getArguments().get(dataKey) != null) {
@@ -68,7 +69,7 @@ public class CheckerboardDisplay extends Fragment {
             cols = 0;
         }
 
-        createGrid(cols);
+        createGrid(cols, gridLabels);
 
         return v;
     }
@@ -112,13 +113,12 @@ public class CheckerboardDisplay extends Fragment {
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(Uri uri);
     }
 
-    public void createGrid(int cols){
+    public void createGrid(int cols, String[] numbers){
         grid.setNumColumns(cols);
-
-        grid.setAdapter(new CheckerboardAdapter(this.getActivity(),cols));
+        grid.setAdapter(new CheckerboardAdapter(this.getActivity(),cols, numbers));
     }
 
 }

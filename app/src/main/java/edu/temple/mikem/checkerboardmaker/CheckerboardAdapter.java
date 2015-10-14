@@ -1,6 +1,7 @@
 package edu.temple.mikem.checkerboardmaker;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
@@ -20,12 +21,14 @@ public class CheckerboardAdapter extends BaseAdapter {
     int columnCount;
     int color;
     int changeColor;
+    String[] numbers;
 
     public CheckerboardAdapter(){
 
     }
 
-    public CheckerboardAdapter(Context c, int count){
+    public CheckerboardAdapter(Context c, int count, String[] numbers){
+        this.numbers = numbers;
         this.c = c;
         this.count = count * count;
         this.columnCount = count;
@@ -48,13 +51,16 @@ public class CheckerboardAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+
         if(convertView == null)
             convertView = new FrameLayout(c);
         TextView tv = new TextView(c);
-        tv.setText(String.valueOf(position + 1));
+        tv.setText(numbers[position]);
         tv.setGravity(Gravity.CENTER);
-        tv.setTextSize(20);
-        if(((position + 1)) ==1){
+        tv.setTextSize(10);
+        tv.setMinimumHeight(80);
+        tv.setPadding(5,5,5,5);
+        if(((position)) == 0){
             tv.setBackgroundColor(Color.BLACK);
             tv.setTextColor(Color.WHITE);
             color= Color.BLACK;
@@ -92,7 +98,7 @@ public class CheckerboardAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(c, String.valueOf(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(c, String.valueOf(position+1), Toast.LENGTH_SHORT).show();
             }
         });
 
